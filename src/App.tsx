@@ -180,7 +180,7 @@ function App() {
             width={'2.9%'}
             style={{ marginBottom: 'auto', marginTop: 'auto' }}
           />
-          <b className="headerTitle">MMSP LAND ACQUISITION</b>
+          <b className="headerTitle">MMSP LAND (HL)</b>
           <div className="date">{!asOfDate ? '' : 'As of ' + asOfDate}</div>
 
           <div className="dropdownFilter">

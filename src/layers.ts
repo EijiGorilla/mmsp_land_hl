@@ -9,10 +9,10 @@ import { statusLot } from './Query';
 /* Standalone table for Dates */
 export const dateTable = new FeatureLayer({
   portalItem: {
-    id: 'a639a78e70da4f84a14c324b11bdab98',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: '3164bda41871462da3793d79fa90c8be',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
 });
 
@@ -101,10 +101,10 @@ export const dateTable = new FeatureLayer({
 
 export const stationBoxLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 20,
   // renderer: stationBoxRenderer,
@@ -167,12 +167,12 @@ const lotLabel = new LabelClass({
 
 export const lotLayer = new FeatureLayer({
   portalItem: {
-    id: '79d97f71d92649faaad08fc7680e40bf',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
-  // layerId: 14,
+  layerId: 14,
   outFields: ['*'],
   title: 'Land Acquisition',
   labelingInfo: [lotLabel],
@@ -231,10 +231,10 @@ const lotLayerBoundaryLabel = new LabelClass({
 
 export const lotLayerBoundary = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 17,
   outFields: ['*'],
@@ -257,12 +257,12 @@ const handedOverRenderer = new SimpleRenderer({
 
 export const handedOverLotLayer = new FeatureLayer({
   portalItem: {
-    id: '79d97f71d92649faaad08fc7680e40bf',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
-  // layerId: 14,
+  layerId: 14,
   outFields: ['*'],
   definitionExpression: 'HandedOver = 1',
   title: 'Handed-Over Lots',
@@ -273,12 +273,12 @@ export const handedOverLotLayer = new FeatureLayer({
 /* Handed-Over Subterranean Lot */
 export const pteLotSubteLayer = new FeatureLayer({
   portalItem: {
-    id: '79d97f71d92649faaad08fc7680e40bf',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
-  // layerId: 14,
+  layerId: 14,
   outFields: ['*'],
   // eslint-disable-next-line no-useless-concat
   definitionExpression: "Type = 'Subterranean'" + ' AND ' + 'PTE = 1',
@@ -388,10 +388,10 @@ export const structureLayerRenderer = new UniqueValueRenderer({
 
 export const structureLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 18,
   title: 'Existing Structure',
@@ -459,10 +459,10 @@ const structureDemolishedRenderer = new UniqueValueRenderer({
 
 export const structureDemolishedLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 18,
   title: 'Demolished Structure',
@@ -529,10 +529,10 @@ let isfRenderer = new UniqueValueRenderer({
 
 export const isfLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 19,
   title: 'ISF (Informal Settlers Families)',
@@ -562,10 +562,10 @@ const ConstructionBoundaryFill = new UniqueValueRenderer({
 
 export const constructionBoundaryLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 4,
   outFields: ['*'],
@@ -581,10 +581,10 @@ export const constructionBoundaryLayer = new FeatureLayer({
 /* Alignment Line */
 export const alignmentLine = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 13,
   outFields: ['*'],
@@ -595,10 +595,10 @@ export const alignmentLine = new FeatureLayer({
 /* Segment DPWH */
 export const dpwhSegmentLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 2,
   title: 'DPWH Segment',
@@ -609,10 +609,10 @@ export const dpwhSegmentLayer = new FeatureLayer({
 /* Depot Building */
 export const depotBuildingLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 6,
   title: 'Depot Building',
@@ -623,10 +623,10 @@ export const depotBuildingLayer = new FeatureLayer({
 /* BSS Building */
 export const bssDepotBuildingLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 7,
   title: 'BSS Building',
@@ -637,10 +637,10 @@ export const bssDepotBuildingLayer = new FeatureLayer({
 /* East Valenzuela */
 export const evsLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 9,
   title: 'East Valenzuela Station',
@@ -651,10 +651,10 @@ export const evsLayer = new FeatureLayer({
 /* NNC Construction boundary (Senate) */
 export const senateBoundaryLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 5,
   title: 'NCC Property',
@@ -679,10 +679,10 @@ const stationLabels = new LabelClass({
 
 export const stationLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 1,
   labelingInfo: [stationLabels],
@@ -694,10 +694,10 @@ stationLayer.listMode = 'hide';
 
 export const creekDivLayer = new FeatureLayer({
   portalItem: {
-    id: '0c427a8b1db54a6dbaab8f534cffdd00',
-    // portal: {
-    //   url: 'https://gis.railway-sector.com/portal',
-    // },
+    id: 'b8c97bfdc9a8402684e9692cd7cbda07',
+    portal: {
+      url: 'https://gis.railway-sector.com/portal',
+    },
   },
   layerId: 10,
   title: 'Creek Diversion',

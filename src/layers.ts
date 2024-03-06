@@ -111,7 +111,7 @@ export const stationBoxLayer = new FeatureLayer({
   minScale: 150000,
   maxScale: 0,
   title: 'Station Box',
-  outFields: ['*'],
+
   popupEnabled: false,
   elevationInfo: {
     mode: 'on-the-ground',
@@ -173,7 +173,7 @@ export const lotLayer = new FeatureLayer({
     },
   },
   layerId: 8,
-  outFields: ['*'],
+
   title: 'Land Acquisition',
   labelingInfo: [lotLabel],
   renderer: lotLayerStatusRenderer,
@@ -237,7 +237,7 @@ export const lotLayerBoundary = new FeatureLayer({
     },
   },
   layerId: 8,
-  outFields: ['*'],
+
   title: 'Lot Boundary',
   renderer: lotLayerBoundaryRenderer,
   labelingInfo: [lotLayerBoundaryLabel],
@@ -263,7 +263,7 @@ export const handedOverLotLayer = new FeatureLayer({
     },
   },
   layerId: 8,
-  outFields: ['*'],
+
   definitionExpression: 'HandedOver = 1',
   title: 'Handed-Over Lots',
   renderer: handedOverRenderer,
@@ -279,7 +279,7 @@ export const pteLotSubteLayer = new FeatureLayer({
     },
   },
   layerId: 8,
-  outFields: ['*'],
+
   // eslint-disable-next-line no-useless-concat
   definitionExpression: "Type = 'Subterranean'" + ' AND ' + 'PTE = 1',
   title: 'PTE Subterranean Lots',
@@ -395,7 +395,7 @@ export const structureLayer = new FeatureLayer({
   },
   layerId: 9,
   title: 'Existing Structure',
-  outFields: ['*'],
+
   renderer: structureLayerRenderer,
   popupTemplate: {
     title: 'Structure ID: <b>{STRUCTURE_TAG_NO_}</b>',
@@ -466,7 +466,7 @@ export const structureDemolishedLayer = new FeatureLayer({
   },
   layerId: 9,
   title: 'Demolished Structure',
-  outFields: ['*'],
+
   renderer: structureDemolishedRenderer,
   popupTemplate: {
     title: 'Structure ID: <b>{STRUCTURE_TAG_NO_}</b>',
@@ -536,7 +536,7 @@ export const isfLayer = new FeatureLayer({
   },
   layerId: 10,
   title: 'ISF (Informal Settlers Families)',
-  outFields: ['*'],
+
   renderer: isfRenderer,
   labelsVisible: false,
 });
@@ -568,7 +568,7 @@ export const constructionBoundaryLayer = new FeatureLayer({
     },
   },
   layerId: 4,
-  outFields: ['*'],
+
   renderer: ConstructionBoundaryFill,
   definitionExpression: 'MappingBoundary = 1',
   title: 'Construction Boundary',
@@ -587,7 +587,7 @@ export const alignmentLine = new FeatureLayer({
     },
   },
   layerId: 6,
-  outFields: ['*'],
+
   title: 'Alignment',
   popupEnabled: false,
 });
@@ -602,7 +602,7 @@ export const dpwhSegmentLayer = new FeatureLayer({
   },
   layerId: 2,
   title: 'DPWH Segment',
-  outFields: ['*'],
+
   popupEnabled: false,
 });
 
@@ -616,7 +616,7 @@ export const depotBuildingLayer = new FeatureLayer({
   },
   layerId: 6,
   title: 'Depot Building',
-  outFields: ['*'],
+
   popupEnabled: false,
 });
 
@@ -630,7 +630,7 @@ export const bssDepotBuildingLayer = new FeatureLayer({
   },
   layerId: 7,
   title: 'BSS Building',
-  outFields: ['*'],
+
   popupEnabled: false,
 });
 
@@ -644,7 +644,7 @@ export const evsLayer = new FeatureLayer({
   },
   layerId: 1,
   title: 'East Valenzuela Station',
-  outFields: ['*'],
+
   popupEnabled: false,
 });
 
@@ -658,7 +658,7 @@ export const senateBoundaryLayer = new FeatureLayer({
   },
   layerId: 5,
   title: 'NCC Property',
-  outFields: ['*'],
+
   popupEnabled: false,
 });
 
@@ -701,6 +701,6 @@ export const creekDivLayer = new FeatureLayer({
   },
   layerId: 3,
   title: 'Creek Diversion',
-  outFields: ['*'],
+
   popupEnabled: false,
 });

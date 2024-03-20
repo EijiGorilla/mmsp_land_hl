@@ -22,6 +22,7 @@ import {
   CalcitePanel,
   CalciteList,
   CalciteListItem,
+  CalciteLabel,
 } from '@esri/calcite-components-react';
 import { dateUpdate, zoomToLayer } from './Query';
 import { lotLayer } from './layers';
@@ -171,56 +172,61 @@ function App() {
         <header
           slot="header"
           id="header-title"
-          style={{ display: 'flex', width: '100%', padding: '0 1rem' }}
+          style={{
+            display: 'flex',
+            width: '100%',
+            padding: '0 1rem',
+            borderStyle: 'solid',
+            borderWidth: 1,
+          }}
         >
           <img
             src="https://EijiGorilla.github.io/Symbols/Projec_Logo/DOTr_Logo_v2.png"
             alt="DOTr Logo"
-            height={'2.9%'}
-            width={'2.9%'}
+            height={'55px'}
+            width={'55px'}
             style={{ marginBottom: 'auto', marginTop: 'auto' }}
           />
           <b className="headerTitle">MMSP LAND (HL)</b>
           <div className="date">{!asOfDate ? '' : 'As of ' + asOfDate}</div>
 
-          <div className="dropdownFilter">
-            <div className="dropdownFilterLayout">
-              <b style={{ color: 'white', margin: 10, fontSize: '0.9vw' }}></b>
-              <Select
-                placeholder="Select CP"
-                value={contractPackage}
-                options={initCpTypeSection}
-                onChange={handleConstractPackageChange}
-                getOptionLabel={(x: any) => x.field1}
-                styles={customstyles}
-              />
-              <br />
-              <b style={{ color: 'white', margin: 10, fontSize: '0.9vw' }}></b>
-              <Select
-                placeholder="Select Land Type"
-                value={landType}
-                options={landTypeList}
-                onChange={handleLandTypeChange}
-                getOptionLabel={(x: any) => x.name}
-                styles={customstyles}
-              />
-              <br />
-              <b style={{ color: 'white', margin: 10, fontSize: '0.9vw' }}></b>
-              <Select
-                placeholder="Select Stations/Area"
-                value={landSection}
-                options={landSectionList}
-                onChange={handleLandSectionChange}
-                getOptionLabel={(x: any) => x.name}
-                styles={customstyles}
-              />
-            </div>
+          <div className="dropdownFilterLayout">
+            <b style={{ color: 'white', margin: 10, fontSize: '0.9vw' }}></b>
+            <Select
+              placeholder="Select CP"
+              value={contractPackage}
+              options={initCpTypeSection}
+              onChange={handleConstractPackageChange}
+              getOptionLabel={(x: any) => x.field1}
+              styles={customstyles}
+            />
+            <br />
+            <b style={{ color: 'white', margin: 10, fontSize: '0.9vw' }}></b>
+            <Select
+              placeholder="Select Land Type"
+              value={landType}
+              options={landTypeList}
+              onChange={handleLandTypeChange}
+              getOptionLabel={(x: any) => x.name}
+              styles={customstyles}
+            />
+            <br />
+            <b style={{ color: 'white', margin: 10, fontSize: '0.9vw' }}></b>
+            <Select
+              placeholder="Select Stations/Area"
+              value={landSection}
+              options={landSectionList}
+              onChange={handleLandSectionChange}
+              getOptionLabel={(x: any) => x.name}
+              styles={customstyles}
+            />
           </div>
+
           <img
             src="https://EijiGorilla.github.io/Symbols/Projec_Logo/MMSP.png"
             alt="GCR Logo"
-            height={'4.4%'}
-            width={'4.4%'}
+            height={'50px'}
+            width={'75px'}
             style={{
               marginBottom: 'auto',
               marginTop: 'auto',

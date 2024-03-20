@@ -1,7 +1,7 @@
 {
   "homepage": "https://eijigorilla.github.io/mmsp_land_hl",
   "name": "mmsp_land_hl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@amcharts/amcharts5": "^5.7.6",

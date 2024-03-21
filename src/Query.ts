@@ -38,7 +38,13 @@ export async function dateUpdate() {
 }
 
 // For Lot Pie Chart
-export const statusLot: string[] = ['Ready for Handover / Handed Over', 'Pending Delivery'];
+export const statusLot: string[] = [
+  'Ready for Handover / Handed Over',
+  'Pending Delivery',
+  'For Appraisal/Offer to Buy',
+];
+
+export const lotColor = ['#70AD47', '#FF0000', '#FFAA00'];
 
 export const statusLotChartQuery = [
   {
@@ -48,6 +54,10 @@ export const statusLotChartQuery = [
   {
     category: statusLot[1],
     value: 2,
+  },
+  {
+    category: statusLot[2],
+    value: 3,
   },
 ];
 
@@ -64,28 +74,42 @@ export async function generateLotData() {
     statisticType: 'sum',
   });
 
+  var total_appraisal_lot = new StatisticDefinition({
+    onStatisticField: 'CASE WHEN H_Level = 3 THEN 1 ELSE 0 END',
+    outStatisticFieldName: 'total_appraisal_lot',
+    statisticType: 'sum',
+  });
+
   var query = lotLayer.createQuery();
-  query.outStatistics = [total_acquired_lot, total_unacquired_lot];
+  query.outStatistics = [total_acquired_lot, total_unacquired_lot, total_appraisal_lot];
   query.returnGeometry = true;
 
   return lotLayer.queryFeatures(query).then((response: any) => {
     var stats = response.features[0].attributes;
     const acquiredLotValue = stats.total_acquired_lot;
     const unacquiredLotValue = stats.total_unacquired_lot;
+    const appraisalLotValue = stats.total_appraisal_lot;
 
     const compile = [
       {
         category: statusLot[0],
         value: acquiredLotValue,
         sliceSettings: {
-          fill: am5.color('#70ad47'),
+          fill: am5.color(lotColor[0]),
         },
       },
       {
         category: statusLot[1],
         value: unacquiredLotValue,
         sliceSettings: {
-          fill: am5.color('#FF0000'),
+          fill: am5.color(lotColor[1]),
+        },
+      },
+      {
+        category: statusLot[2],
+        value: appraisalLotValue,
+        sliceSettings: {
+          fill: am5.color(lotColor[2]),
         },
       },
     ];

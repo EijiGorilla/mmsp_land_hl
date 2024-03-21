@@ -4,7 +4,7 @@ import SimpleFillSymbol from '@arcgis/core/symbols/SimpleFillSymbol';
 import UniqueValueRenderer from '@arcgis/core/renderers/UniqueValueRenderer';
 import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer';
 import { SimpleMarkerSymbol, TextSymbol, SimpleLineSymbol } from '@arcgis/core/symbols';
-import { statusLot } from './Query';
+import { lotColor, statusLot } from './Query';
 
 /* Standalone table for Dates */
 export const dateTable = new FeatureLayer({
@@ -120,8 +120,6 @@ export const stationBoxLayer = new FeatureLayer({
 
 /* Land */
 
-const lotColor = ['#70AD47', '#FF0000'];
-
 const defaultSymbolLot = new SimpleFillSymbol({
   color: [0, 0, 0, 0],
   style: 'solid',
@@ -147,6 +145,13 @@ const lotLayerStatusRenderer = new UniqueValueRenderer({
       label: statusLot[1],
       symbol: new SimpleFillSymbol({
         color: lotColor[1],
+      }),
+    },
+    {
+      value: 3,
+      label: statusLot[2],
+      symbol: new SimpleFillSymbol({
+        color: lotColor[2],
       }),
     },
   ],

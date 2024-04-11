@@ -2,6 +2,7 @@ import { dateTable, lotLayer } from './layers';
 import StatisticDefinition from '@arcgis/core/rest/support/StatisticDefinition';
 import * as am5 from '@amcharts/amcharts5';
 import { view } from './Scene';
+import { lotStatusField, statusLotQuery, statusLotLabel } from './StatusUniqueValues';
 
 // Updat date
 export async function dateUpdate() {
@@ -38,82 +39,62 @@ export async function dateUpdate() {
 }
 
 // For Lot Pie Chart
-export const statusLot: string[] = [
-  'Ready for Handover / Handed Over',
-  'Pending Delivery',
-  'For Appraisal/Offer to Buy',
-];
+export async function generateLotData(contractp: any, landtype: any, landsection: any) {
+  // Query
+  const qCP = "Package = '" + contractp + "'";
+  const qLandType = "Type = '" + landtype + "'";
+  const qCpLandType = qCP + ' AND ' + qLandType;
+  const qLandSection = "Station1 ='" + landsection + "'";
+  const qCpLandTypeSection = qCpLandType + ' AND ' + qLandSection;
 
-export const lotColor = ['#70AD47', '#FF0000', '#FFAA00'];
-
-export const statusLotChartQuery = [
-  {
-    category: statusLot[0],
-    value: 1,
-  },
-  {
-    category: statusLot[1],
-    value: 2,
-  },
-  {
-    category: statusLot[2],
-    value: 3,
-  },
-];
-
-export async function generateLotData() {
-  var total_acquired_lot = new StatisticDefinition({
-    onStatisticField: 'CASE WHEN H_Level = 1 THEN 1 ELSE 0 END',
-    outStatisticFieldName: 'total_acquired_lot',
-    statisticType: 'sum',
-  });
-
-  var total_unacquired_lot = new StatisticDefinition({
-    onStatisticField: 'CASE WHEN H_Level = 2 THEN 1 ELSE 0 END',
-    outStatisticFieldName: 'total_unacquired_lot',
-    statisticType: 'sum',
-  });
-
-  var total_appraisal_lot = new StatisticDefinition({
-    onStatisticField: 'CASE WHEN H_Level = 3 THEN 1 ELSE 0 END',
-    outStatisticFieldName: 'total_appraisal_lot',
-    statisticType: 'sum',
+  var total_count = new StatisticDefinition({
+    onStatisticField: lotStatusField,
+    outStatisticFieldName: 'total_count',
+    statisticType: 'count',
   });
 
   var query = lotLayer.createQuery();
-  query.outStatistics = [total_acquired_lot, total_unacquired_lot, total_appraisal_lot];
-  query.returnGeometry = true;
+  query.outFields = [lotStatusField];
+  query.outStatistics = [total_count];
+  query.orderByFields = [lotStatusField];
+  query.groupByFieldsForStatistics = [lotStatusField];
+
+  if (!contractp) {
+    query.where = '1=1';
+  } else if (contractp && !landtype && !landsection) {
+    query.where = qCP;
+  } else if (contractp && landtype && !landsection) {
+    query.where = qCpLandType;
+  } else {
+    query.where = qCpLandTypeSection;
+  }
 
   return lotLayer.queryFeatures(query).then((response: any) => {
-    var stats = response.features[0].attributes;
-    const acquiredLotValue = stats.total_acquired_lot;
-    const unacquiredLotValue = stats.total_unacquired_lot;
-    const appraisalLotValue = stats.total_appraisal_lot;
+    var stats = response.features;
+    const data = stats.map((result: any, index: any) => {
+      const attributes = result.attributes;
+      const status_id = attributes.H_Level;
+      const count = attributes.total_count;
+      return Object.assign({
+        category: statusLotLabel[status_id - 1],
+        value: count,
+      });
+    });
 
-    const compile = [
-      {
-        category: statusLot[0],
-        value: acquiredLotValue,
+    const data1: any = [];
+    statusLotLabel.map((status: any, index: any) => {
+      const find = data.find((emp: any) => emp.category === status);
+      const value = find === undefined ? 0 : find?.value;
+      const object = {
+        category: status,
+        value: value,
         sliceSettings: {
-          fill: am5.color(lotColor[0]),
+          fill: am5.color(statusLotQuery[index].color),
         },
-      },
-      {
-        category: statusLot[1],
-        value: unacquiredLotValue,
-        sliceSettings: {
-          fill: am5.color(lotColor[1]),
-        },
-      },
-      {
-        category: statusLot[2],
-        value: appraisalLotValue,
-        sliceSettings: {
-          fill: am5.color(lotColor[2]),
-        },
-      },
-    ];
-    return compile;
+      };
+      data1.push(object);
+    });
+    return data1;
   });
 }
 

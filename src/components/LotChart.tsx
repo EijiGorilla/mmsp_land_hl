@@ -14,10 +14,10 @@ import {
   generateHandedOver,
   generateLotData,
   generateLotNumber,
-  statusLotChartQuery,
   thousands_separators,
 } from '../Query';
 import { CalciteLabel } from '@esri/calcite-components-react';
+import { statusLotQuery } from '../StatusUniqueValues';
 
 // Dispose function
 function maybeDisposeRoot(divId: any) {
@@ -68,7 +68,7 @@ const LotChart = ({ contractp, landtype, landsection }: any) => {
   }
 
   useEffect(() => {
-    generateLotData().then((result: any) => {
+    generateLotData(contractp, landtype, landsection).then((result: any) => {
       setLotData(result);
     });
 
@@ -138,7 +138,7 @@ const LotChart = ({ contractp, landtype, landsection }: any) => {
     pieSeries.slices.template.events.on('click', (ev) => {
       const selected: any = ev.target.dataItem?.dataContext;
       const categorySelected: string = selected.category;
-      const find = statusLotChartQuery.find((emp: any) => emp.category === categorySelected);
+      const find = statusLotQuery.find((emp: any) => emp.category === categorySelected);
       const statusSelect = find?.value;
 
       var highlightSelect: any;

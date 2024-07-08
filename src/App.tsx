@@ -53,6 +53,14 @@ function App() {
   const [landSectionList, setLandSectionList] = useState([]);
   const [landTypeSelected, setLandTypeSelected] = useState({ name: '' });
 
+  //
+  const [lotLayerLoaded, setLotLayerLoaded] = useState<any>();
+  useEffect(() => {
+    lotLayer.load().then(() => {
+      setLotLayerLoaded(lotLayer.loadStatus);
+    });
+  });
+
   //**** Create dropdonw list */
   useEffect(() => {
     const dropdownData = new DropDownData({
@@ -160,12 +168,14 @@ function App() {
             </CalciteTabNav>
             {/* CalciteTab: Lot */}
             <CalciteTab>
-              <LotChart
-                contractp={contractPackage === null ? '' : contractPackage.field1}
-                landtype={landTypeSelected.name}
-                landsection={landSection === null ? '' : landSection.name}
-                typelist={landSectionList}
-              />
+              {lotLayerLoaded === 'loaded' && (
+                <LotChart
+                  contractp={contractPackage === null ? '' : contractPackage.field1}
+                  landtype={landTypeSelected.name}
+                  landsection={landSection === null ? '' : landSection.name}
+                  typelist={landSectionList}
+                />
+              )}
             </CalciteTab>
           </div>
         </CalciteTabs>
@@ -353,15 +363,13 @@ function App() {
         <div className="mapDiv" ref={mapDiv}></div>
 
         {/* Lot progress chart is loaded ONLY when charts widget is clicked. */}
-        {nextWidget === 'charts' && nextWidget !== activeWidget ? (
+        {nextWidget === 'charts' && nextWidget !== activeWidget && lotLayerLoaded === 'loaded' && (
           <LotProgressChart
             contractp={contractPackage === null ? '' : contractPackage.field1}
             landtype={landTypeSelected.name}
             landsection={landSection === null ? '' : landSection.name}
             nextwidget={nextWidget === activeWidget ? null : nextWidget}
           />
-        ) : (
-          ''
         )}
       </CalciteShell>
     </div>

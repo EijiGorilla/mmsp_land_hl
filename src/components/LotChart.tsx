@@ -307,7 +307,7 @@ const LotChart = ({ contractp, landtype, landsection }: any) => {
       ></div>
 
       {/* Handed-Over/PTE */}
-      <CalciteLabel>HANDED-OVER / PTE</CalciteLabel>
+      <CalciteLabel>HANDED-OVER</CalciteLabel>
       <CalciteLabel layout="inline">
         {handedOverNumber[0] === 'Infinity' ? (
           <b className="handedOverNumber">
